@@ -1,162 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Will You Be My Valentine? 💖</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Be My Valentine 💖</title>
 
 <style>
-:root {
-  --pink1: #ffd6e8;
-  --pink2: #ffe8f2;
-  --ink: #1e1e1e;
-  --muted: #444;
-  --yes: #e83a5a;
-  --yes2: #ff5c7a;
-  --card: rgba(255,255,255,.85);
-  --shadow: 0 18px 60px rgba(0,0,0,.15);
+:root{
+  --pink1:#ffd6e8;
+  --pink2:#ffe8f2;
+  --yes:#e83a5a;
+  --yes2:#ff5c7a;
+  --card:rgba(255,255,255,.85);
+  --shadow:0 18px 50px rgba(0,0,0,.15);
 }
+*{box-sizing:border-box}
 
-* { box-sizing: border-box; }
-
-body {
-  margin: 0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto;
+body{
+  margin:0;
+  min-height:100svh;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto;
   background:
-    radial-gradient(1200px 600px at 20% 20%, var(--pink1), transparent 60%),
-    radial-gradient(1000px 600px at 80% 70%, var(--pink2), transparent 55%),
-    linear-gradient(135deg, #ffeef6, #fbe7ff);
-  height: 100svh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
+    radial-gradient(1200px 600px at 20% 20%,var(--pink1),transparent 60%),
+    radial-gradient(1000px 600px at 80% 70%,var(--pink2),transparent 55%),
+    linear-gradient(135deg,#ffeef6,#fbe7ff);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
 }
 
-/* Floating hearts */
-.hearts {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  opacity: .5;
+/* floating hearts */
+.hearts{
+  position:fixed; inset:0; pointer-events:none; opacity:.5;
 }
-.heart {
-  position: absolute;
-  animation: floatUp linear infinite;
+.heart{
+  position:absolute;
+  animation:floatUp linear infinite;
 }
-@keyframes floatUp {
-  from { transform: translateY(120vh); opacity: 0; }
-  10% { opacity: .9; }
-  to { transform: translateY(-20vh); opacity: 0; }
+@keyframes floatUp{
+  from{transform:translateY(120vh);opacity:0}
+  10%{opacity:.9}
+  to{transform:translateY(-20vh);opacity:0}
 }
 
-.wrap {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
+/* layout */
+.wrap{
+  width:100%;
+  max-width:980px;
+  padding:12px;
+}
+.card{
+  width:100%;
+  max-height:90svh;
+  background:var(--card);
+  backdrop-filter:blur(10px);
+  border-radius:22px;
+  padding:clamp(16px,4vw,28px);
+  box-shadow:var(--shadow);
+  text-align:center;
+  overflow-y:auto;
 }
 
-.card {
-  width: min(960px, 94vw);
-  max-height: 92svh;
-  background: var(--card);
-  backdrop-filter: blur(10px);
-  border-radius: 22px;
-  padding: clamp(16px, 3.5vw, 28px);
-  box-shadow: var(--shadow);
-  text-align: center;
-  overflow-y: auto;          /* ✅ allow vertical content */
-  overscroll-behavior: contain;
+h1{
+  font-size:clamp(26px,6vw,46px);
+  margin:6px 0;
+  line-height:1.1;
+}
+.sub{
+  color:#444;
+  font-size:clamp(14px,3.8vw,18px);
+  margin-bottom:10px;
 }
 
-
-h1 {
-  margin: 4px 0;
-  font-size: clamp(26px, 6vw, 46px);
-  line-height: 1.1;
+/* buttons area */
+.row{
+  display:flex;
+  gap:12px;
+  justify-content:center;
 }
-.sub {
-  font-size: clamp(14px, 3.8vw, 18px);
-  color: var(--muted);
-  margin-bottom: 12px;
-}
-
-.row {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
+.yes-slot,.no-slot{
+  width:clamp(180px,40vw,320px);
+  height:clamp(140px,35vw,260px);
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
-.yes-slot,
-.no-slot {
-  width: clamp(180px, 40vw, 320px);
-  height: clamp(140px, 35vw, 260px);
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+button{
+  border:none;
+  padding:14px 26px;
+  font-size:18px;
+  border-radius:14px;
+  cursor:pointer;
 }
 
-button {
-  border: none;
-  padding: 14px 26px;
-  font-size: 18px;
-  border-radius: 14px;
-  cursor: pointer;
+.yes{
+  background:linear-gradient(180deg,var(--yes2),var(--yes));
+  color:#fff;
+  font-weight:700;
+  box-shadow:0 10px 22px rgba(232,58,90,.35);
+  animation:wiggle 1.2s infinite;
+}
+@keyframes wiggle{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.12) rotate(-2deg)}
 }
 
-.yes {
-  background: linear-gradient(180deg, var(--yes2), var(--yes));
-  color: #fff;
-  font-weight: 700;
-  box-shadow: 0 10px 22px rgba(232,58,90,.35);
-}
-.yes:hover { transform: scale(1.05); }
-
-.no {
-  background: #eee;
-  min-width: 110px;
-  position: absolute;
-  transition: left .15s ease, top .15s ease;
+.no{
+  background:#eee;
+  min-width:110px;
+  position:absolute;
+  transition:left .15s ease,top .15s ease;
 }
 
-.hidden { display: none !important; }
+.hidden{display:none!important}
 
-/* Celebration */
-.yay {
-  font-size: clamp(30px, 7vw, 60px);
+/* celebration */
+.yay{
+  font-size:clamp(30px,7vw,58px);
 }
-.gifbox {
-  width: min(340px, 78vw);
-  margin: 10px auto;
-  border-radius: 18px;
-  overflow: hidden;
+.gifbox{
+  width:min(360px,80vw);
+  margin:12px auto;
+  border-radius:18px;
+  overflow:hidden;
+}
+.gifbox img{
+  width:100%;
+  max-height:36svh;
+  object-fit:contain;
 }
 
-.gifbox img {
-  max-height: 38svh;   /* ✅ prevents pushing text out */
-  object-fit: contain;
+/* confetti */
+.confetti{
+  position:fixed; inset:0; pointer-events:none;
 }
-
-.confetti {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
+.confetti i{
+  position:absolute;
+  width:10px; height:16px;
+  animation:fall 1.8s ease-in infinite;
+  opacity:0;
 }
-.confetti i {
-  position: absolute;
-  width: 10px;
-  height: 16px;
-  animation: fall 1.8s ease-in infinite;
-  opacity: 0;
-}
-@keyframes fall {
-  0% { transform: translateY(-20vh) rotate(0deg); opacity: 0; }
-  10% { opacity: 1; }
-  100% { transform: translateY(110vh) rotate(540deg); opacity: 0; }
+@keyframes fall{
+  0%{transform:translateY(-20vh) rotate(0);opacity:0}
+  10%{opacity:1}
+  100%{transform:translateY(110vh) rotate(540deg);opacity:0}
 }
 </style>
 </head>
@@ -170,7 +160,7 @@ button {
     <h1><span id="who"></span>, will you be my Valentine? 💖</h1>
     <p class="sub">Choose wisely… 😏</p>
 
-    <div class="row" id="playground">
+    <div class="row">
       <div class="yes-slot">
         <button class="yes" id="yesBtn">YES 💘</button>
       </div>
@@ -184,7 +174,7 @@ button {
     <h2 class="yay">💖 YAY!!! 💖</h2>
     <p>Best decision ever 😘</p>
     <div class="gifbox">
-      <img src="./kinnu.jpg" alt="Love" />
+      <img src="./kinnu.jpg" alt="Love">
     </div>
     <h3>I love you ❤️</h3>
   </div>
@@ -193,67 +183,114 @@ button {
 <div class="confetti hidden" id="confetti"></div>
 
 <script>
-const NAME = "Upendar";
-document.getElementById("who").textContent = NAME;
+/* name */
+document.getElementById("who").textContent="Upendar";
 
-const noBtn = document.getElementById("noBtn");
-const noSlot = document.getElementById("noSlot");
-const yesBtn = document.getElementById("yesBtn");
-const askCard = document.getElementById("askCard");
-const yayCard = document.getElementById("yayCard");
-const confetti = document.getElementById("confetti");
-
+/* NO button logic */
+const noBtn=document.getElementById("noBtn");
+const noSlot=document.getElementById("noSlot");
+const funnyNo=[
+  "Wait 😳","Nope 😈","Think again 😜",
+  "Wrong choice 💔","Try YES 💖","Hehe 😏", 
+  "This could be a mistake!",
+  "Think again 😶‍🌫️",
+  "Don’t do this to me 💔",
+  "Give it another thought!",
+  "You might regret this!",
+  "Really sure ?",
+  "Surely not!",
+  "Last chance! 😬",
+  "Are you absolutely certian? 🙅‍♂️",
+  "I will cry 😭",
+  "Please no 🥺",
+];
 let resetTimer;
 
-const funnyTexts = [
-  "Wait 😳", "Think again 😜", "Nope!", "Wrong choice 😏",
-  "Hehe 😈", "Not this one 💔", "Try YES 💖"
-];
-
-function moveNo() {
-  const b = noSlot.getBoundingClientRect();
-  const r = noBtn.getBoundingClientRect();
-  const x = Math.random() * (b.width - r.width);
-  const y = Math.random() * (b.height - r.height);
-  noBtn.style.left = x + "px";
-  noBtn.style.top = y + "px";
-  noBtn.textContent = funnyTexts[Math.floor(Math.random() * funnyTexts.length)];
+function moveNo(){
+  const b=noSlot.getBoundingClientRect();
+  const r=noBtn.getBoundingClientRect();
+  const x=Math.random()*(b.width-r.width);
+  const y=Math.random()*(b.height-r.height);
+  noBtn.style.left=x+"px";
+  noBtn.style.top=y+"px";
+  noBtn.textContent=funnyNo[Math.floor(Math.random()*funnyNo.length)];
   clearTimeout(resetTimer);
-  resetTimer = setTimeout(() => noBtn.textContent = "NO", 1200);
+  resetTimer=setTimeout(()=>noBtn.textContent="NO",1200);
 }
+noBtn.addEventListener("mouseenter",moveNo);
+noBtn.addEventListener("touchstart",e=>{e.preventDefault();moveNo();});
 
-noBtn.addEventListener("mouseenter", moveNo);
-noBtn.addEventListener("touchstart", e => {
+/* YES insanity */
+const yesBtn=document.getElementById("yesBtn");
+const askCard=document.getElementById("askCard");
+const yayCard=document.getElementById("yayCard");
+const confetti=document.getElementById("confetti");
+
+const yesStages=[
+  "YES 💘",
+  "Are you sure? 😏",
+  "REALLY sure? 😈",
+  "OKAY CLICK 😭💖"
+];
+let yesStep=0;
+
+yesBtn.addEventListener("click",e=>{
   e.preventDefault();
-  moveNo();
+  if(yesStep<yesStages.length-1){
+    yesStep++;
+    yesBtn.textContent=yesStages[yesStep];
+    yesBtn.style.transform="scale(1.25)";
+    setTimeout(()=>yesBtn.style.transform="",150);
+    miniPop();
+  }else{
+    finalYes();
+  }
 });
 
-yesBtn.addEventListener("click", () => {
+function miniPop(){
+  for(let i=0;i<8;i++){
+    const h=document.createElement("div");
+    h.textContent=["💖","💘","💞","💕"][Math.floor(Math.random()*4)];
+    h.style.position="fixed";
+    const r=yesBtn.getBoundingClientRect();
+    h.style.left=r.left+30+"px";
+    h.style.top=r.top+"px";
+    h.style.transition="transform .6s,opacity .6s";
+    document.body.appendChild(h);
+    setTimeout(()=>{
+      h.style.transform=`translate(${Math.random()*80-40}px,-80px)`;
+      h.style.opacity=0;
+    },10);
+    setTimeout(()=>h.remove(),700);
+  }
+}
+
+function finalYes(){
   askCard.classList.add("hidden");
   yayCard.classList.remove("hidden");
   launchConfetti();
-});
+}
 
-function launchConfetti() {
+function launchConfetti(){
   confetti.classList.remove("hidden");
   for(let i=0;i<80;i++){
-    const c = document.createElement("i");
-    c.style.left = Math.random()*100+"vw";
-    c.style.background = `hsl(${Math.random()*360} 90% 60%)`;
-    c.style.animationDelay = Math.random()+"s";
+    const c=document.createElement("i");
+    c.style.left=Math.random()*100+"vw";
+    c.style.background=`hsl(${Math.random()*360} 90% 60%)`;
+    c.style.animationDelay=Math.random()+"s";
     confetti.appendChild(c);
   }
 }
 
-/* hearts */
-const hearts = document.getElementById("hearts");
-["💗","💖","💞","💕","💘"].forEach(() => {
-  const h = document.createElement("span");
-  h.className = "heart";
-  h.textContent = ["💗","💖","💞","💕","💘"][Math.floor(Math.random()*5)];
-  h.style.left = Math.random()*100+"vw";
-  h.style.fontSize = 16+Math.random()*20+"px";
-  h.style.animationDuration = 7+Math.random()*10+"s";
+/* floating hearts */
+const hearts=document.getElementById("hearts");
+["💗","💖","💞","💕","💘"].forEach(()=>{
+  const h=document.createElement("span");
+  h.className="heart";
+  h.textContent=["💗","💖","💞","💕","💘"][Math.floor(Math.random()*5)];
+  h.style.left=Math.random()*100+"vw";
+  h.style.fontSize=16+Math.random()*20+"px";
+  h.style.animationDuration=7+Math.random()*10+"s";
   hearts.appendChild(h);
 });
 </script>
